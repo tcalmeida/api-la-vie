@@ -1,12 +1,17 @@
 const express = require("express");
 const psicologosController = require("../controller/psicologosController");
+const psicologosValidation = require("../validations/psicologos/create");
+
+
+
+
 
 const routes = express.Router();
 
 routes.get("/psicologos", psicologosController.listarPsi);
-routes.get("/psicologos/:id", psicologosController.buscarIdPsi);
-routes.post("/psicologos", psicologosController.cadastrarPsi);
-routes.put("/psicologos/:id", psicologosController.atualizarPsi);
+routes.get("/psicologos/:id", psicologosController.buscarPsiId);
+routes.post("/psicologos", psicologosValidation, psicologosController.cadastrarPsi);
+routes.put("/psicologos/:id", psicologosValidation, psicologosController.atualizarPsi);
 routes.delete("/psicologos/:id", psicologosController.deletarPsi);
 
 // Opcional

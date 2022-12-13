@@ -28,6 +28,7 @@ const Psicologos = db.define(
       type: DataTypes.DATE,
     },
   },
+  // { timestamps: false },
   {
     tableName: "psicologos",
   }
