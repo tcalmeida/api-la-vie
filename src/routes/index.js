@@ -1,8 +1,8 @@
 const express = require("express");
 const psicologosController = require("../controller/psicologosController");
 const psicologosValidation = require("../validations/psicologos/create");
-
-
+const authController = require("../controller/authController");
+const authLoginValidation = require("../validations/auth/login");
 
 
 
@@ -13,6 +13,8 @@ routes.get("/psicologos/:id", psicologosController.buscarPsiId);
 routes.post("/psicologos", psicologosValidation, psicologosController.cadastrarPsi);
 routes.put("/psicologos/:id", psicologosValidation, psicologosController.atualizarPsi);
 routes.delete("/psicologos/:id", psicologosController.deletarPsi);
+
+routes.post("/login", authLoginValidation, authController.login);
 
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
