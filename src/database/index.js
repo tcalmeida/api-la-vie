@@ -2,7 +2,7 @@ const sequelize = require ("sequelize");
 
 const DB_NAME = "bd_la_vie";     // inserir nome do banco de dados
 const DB_USER = "root";
-const DB_PASS ="vascao";      // inserir senha
+const DB_PASS ="123qwe@";      // inserir senha
 const DB_CONFIG =  {
     dialect: "mysql",
     host: "localhost",
