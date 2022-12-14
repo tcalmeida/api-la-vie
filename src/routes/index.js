@@ -1,4 +1,5 @@
 const express = require("express");
+const { buscarAtendimento } = require("../controller/atendimentosController");
 const atendimentosController = require("../controller/atendimentosController");
 const pacientesController = require("../controller/pacientesController");
 const psicologosController = require("../controller/psicologosController");
@@ -21,10 +22,15 @@ routes.delete("/pacientes/:id", pacientesController.deletarPaciente);
 
 //Criando rotas atendimentos
 routes.get("/atendimentos", atendimentosController.listarAtendimentos);
+<<<<<<< HEAD
 routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
 routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
 routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 
+=======
+routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento)
+routes.post("/atendimentos", atendimentosController.cadastrarAtendimento)
+>>>>>>> 6846bf3baa7d438b5bd19e214cd2fc850c5378eb
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
 // routes.get("/dashboard/numero-atendimentos", dashController.atendimentos);

@@ -9,6 +9,8 @@ Psicologos.belongsTo(Atendimentos, {foreignKey: 'psicologos_id'});
 
 
 
+
+
 module.exports = {
   Psicologos,
   Atendimentos,
