@@ -12,7 +12,7 @@ const Atendimentos = db.define(
         primaryKey: true,
         autoIncrement: true,
          },
-      data_nascimento: {
+      data_atendimento: {
         type: DataTypes.DATE,
       },
       observacao: {
