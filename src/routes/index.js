@@ -1,4 +1,5 @@
 const express = require("express");
+const { buscarAtendimento } = require("../controller/atendimentosController");
 const atendimentosController = require("../controller/atendimentosController");
 const psicologosController = require("../controller/psicologosController");
 const psicologosValidation = require("../validations/psicologos/create");
@@ -19,7 +20,7 @@ routes.delete("/psicologos/:id", psicologosController.deletarPsi);
 
 //Criando rotas atendimentos
 routes.get("/atendimentos", atendimentosController.listarAtendimentos);
-routes.get("/atendimentos/:id", )
+routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento)
 routes.post("/atendimentos", atendimentosController.cadastrarAtendimento)
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);

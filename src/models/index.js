@@ -6,7 +6,7 @@ const Pacientes = require('../models/Pacientes');
 
 Pacientes.belongsTo(Atendimentos, {foreignKey: 'pacientes_id'});
 Psicologos.belongsTo(Atendimentos, {foreignKey: 'psicologos_id'});
-Psicologos.belongsTo(Pacientes, {foreignKey: 'psicologos_id'});
+
 
 
 
