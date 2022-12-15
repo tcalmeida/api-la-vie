@@ -4,14 +4,10 @@ const bcrypt = require("bcryptjs");
 const psicologosController = {
   listarPsi: async (req, res) => {
     try {
-      const listar = await Psicologos.findAll({
-        attributes: {
-          exclude: ["createdAt", "updatedAt"],
-        },
-      });
+      const listar = await Psicologos.findAll();
       return res.status(200).json(listar);
     } catch (error) {
-      return res.status(500).json("Não foi possível realizar a ação");
+      return  res.status(500).json("Não foi possível realizar a ação");
     }
   },
 

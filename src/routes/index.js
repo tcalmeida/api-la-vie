@@ -4,7 +4,7 @@ const atendimentosController = require("../controller/atendimentosController");
 const pacientesController = require("../controller/pacientesController");
 const psicologosController = require("../controller/psicologosController");
 const psicologosValidation = require("../validations/psicologos/create");
-
+const pacientesValidation = require("../validations/pacientes/create");
 
 const routes = express.Router();
 
@@ -16,21 +16,16 @@ routes.delete("/psicologos/:id", psicologosController.deletarPsi);
 
 routes.get("/pacientes", pacientesController.listarPacientes);
 routes.get("/pacientes/:id", pacientesController.buscarPacientesId);
-routes.post("/pacientes", pacientesController.cadastrarPaciente);
-routes.put("/pacientes/:id", pacientesController.atualizarPaciente);
+routes.post("/pacientes", pacientesValidation, pacientesController.cadastrarPaciente);
+routes.put("/pacientes/:id", pacientesValidation, pacientesController.atualizarPaciente);
 routes.delete("/pacientes/:id", pacientesController.deletarPaciente);
 
-//Criando rotas atendimentos
+
 routes.get("/atendimentos", atendimentosController.listarAtendimentos);
-<<<<<<< HEAD
 routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
 routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
-routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
+// //routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 
-=======
-routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento)
-routes.post("/atendimentos", atendimentosController.cadastrarAtendimento)
->>>>>>> 6846bf3baa7d438b5bd19e214cd2fc850c5378eb
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
 // routes.get("/dashboard/numero-atendimentos", dashController.atendimentos);
