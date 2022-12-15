@@ -1,4 +1,5 @@
-const Psicologos = require("../models/Psicologos");
+const { Psicologos } = require("../models/");
+const bcrypt = require("bcryptjs");
 
 const psicologosController = {
   listarPsi: async (req, res) => {
@@ -6,21 +7,25 @@ const psicologosController = {
       const listar = await Psicologos.findAll();
       return res.status(200).json(listar);
     } catch (error) {
-      return res.status(500).json("Não foi possível realizar a ação");
+      return  res.status(500).json("Não foi possível realizar a ação");
     }
   },
 
-  buscarIdPsi: async (req, res) => {
+  buscarPsiId: async (req, res) => {
     const { id } = req.params;
-    const checkPsi = await Psicologos.findByPk(id);
+    let buscarPsi = await Psicologos.findByPk(id);
 
-    if (!checkPsi) {
+    if (!buscarPsi) {
       return res.status(404).json("Id não encontrado");
     }
 
     try {
-      const buscarPsi = await Psicologos.findByPk(id);
-      
+      buscarPsi = await Psicologos.findByPk(id, {
+        attributes: {
+          exclude: ["senha"],
+        },
+      });
+
       return res.status(200).json(buscarPsi);
     } catch (error) {
       return res.status(500).json("Não foi possível realizar a ação");
@@ -30,13 +35,15 @@ const psicologosController = {
   cadastrarPsi: async (req, res) => {
     try {
       const { nome, email, senha, apresentacao } = req.body;
+      const senhaCripto = bcrypt.hashSync(senha, 10);
+
       const cadastrarPsi = await Psicologos.create({
         nome,
         email,
-        senha,
+        senha: senhaCripto,
         apresentacao,
       });
-      return res.status(200).json(cadastrarPsi);
+      return res.status(201).json(cadastrarPsi);
     } catch (error) {
       return res.status(400).json("Não foi possível realizar o cadastro");
     }
@@ -45,6 +52,7 @@ const psicologosController = {
   atualizarPsi: async (req, res) => {
     const { id } = req.params;
     const { nome, email, senha, apresentacao } = req.body;
+    senhaCripto = bcrypt.hashSync(senha, 10);
 
     const checkPsi = await Psicologos.findByPk(id);
     if (!checkPsi) {
@@ -56,7 +64,7 @@ const psicologosController = {
         {
           nome,
           email,
-          senha,
+          senha: senhaCripto,
           apresentacao,
         },
         {
@@ -65,7 +73,9 @@ const psicologosController = {
           },
         }
       );
-      return res.status(200).json(atualizarPsi);
+
+      showPsicologo = await Psicologos.findByPk(id);
+      return res.status(200).json(showPsicologo);
     } catch (error) {
       return res.status(500).json("Não foi possível atualizar o cadastro");
     }
@@ -73,14 +83,14 @@ const psicologosController = {
 
   deletarPsi: async (req, res) => {
     const { id } = req.params;
-    
-    const checkPsi = await Psicologos.findByPk(id);
-    if (!checkPsi) {
+
+    let deletarPsi = await Psicologos.findByPk(id);
+    if (!deletarPsi) {
       return res.status(404).json("Id não encontrado");
-    };
+    }
 
     try {
-      const deletarPsi = await Psicologos.destroy({
+      deletarPsi = await Psicologos.destroy({
         where: {
           id,
         },
