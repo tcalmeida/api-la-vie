@@ -30,13 +30,17 @@ const atendimentosController = {
 
   cadastrarAtendimento: async (req, res) => {
     console.log(req.auth)
+    
     try {
       const { data_atendimento, observacao, pacientes_id } = req.body;
+
       const cadastrarAtendimento = await Atendimentos.create({
         data_atendimento,
         observacao,
         pacientes_id,
+        psicologos_id: req.auth.id
       });
+
       return res.status(201).json(cadastrarAtendimento);
     } catch (error) {
       return res.status(400).json("Não foi possível realizar o cadastro");

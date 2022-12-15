@@ -31,7 +31,18 @@ const dashController = {
       return res.status(500).json("Não foi possível realizar a ação");
     }
   },
+  media: async (req, res) => {
+    try {
+      atendimentos = await Atendimentos.count();
+      psicologos = await Psicologos.count();
+      const media = atendimentos / psicologos
+      return res
+        .status(200)
+        .json(`A média de atendimentos por psicologos é de ${media}.`);
+    } catch (error) {
+      return res.status(500).json("Não foi possível realizar a ação");
+    }
+  },
 };
 
 module.exports = dashController;
-
