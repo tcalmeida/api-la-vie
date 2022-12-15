@@ -21,10 +21,10 @@ routes.put("/pacientes/:id", pacientesValidation, pacientesController.atualizarP
 routes.delete("/pacientes/:id", pacientesController.deletarPaciente);
 
 
-routes.get("/atendimentos", atendimentosController.listarAtendimentos);
-routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
-routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
-// //routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
+// routes.get("/atendimentos", atendimentosController.listarAtendimentos);
+// routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
+// routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
+// // // //routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
