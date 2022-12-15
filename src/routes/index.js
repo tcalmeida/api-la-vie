@@ -34,7 +34,7 @@ routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
 // routes.get("/dashboard/numero-atendimentos", dashController.atendimentos);
-routes.get("/dashboard/numero-psicologos", dashController.psicologos);
+// routes.get("/dashboard/numero-psicologos", dashController.psicologos);
 // routes.get("/dashboard/media-atendimentos", dashController.medAtendimentos);
 
 module.exports = routes;
