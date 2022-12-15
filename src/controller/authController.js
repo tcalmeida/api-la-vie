@@ -15,11 +15,14 @@ const loginController = {
 
     if (!psicologo) {
       return res
-        .status(401).json("E-mail ou senha inválido, verifique e tente novamente");
+        .status(401)
+        .json("E-mail ou senha inválido, verifique e tente novamente");
     }
 
     if (!bcrypt.compareSync(senha, psicologo.senha)) {
-      return res.status(401).json("E-mail ou senha inválido, verifique e tente novamente");
+      return res
+        .status(401)
+        .json("E-mail ou senha inválido, verifique e tente novamente");
     }
 
     try {
@@ -33,7 +36,6 @@ const loginController = {
       );
 
       return res.json(jwtToken);
-
     } catch (error) {
       return res.status(500).json("Não foi possível realizar a ação");
     }

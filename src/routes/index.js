@@ -1,12 +1,14 @@
 const express = require("express");
-const { buscarAtendimento } = require("../controller/atendimentosController");
 const atendimentosController = require("../controller/atendimentosController");
 const pacientesController = require("../controller/pacientesController");
 const psicologosController = require("../controller/psicologosController");
+const dashController = require("../controller/dashController");
 const psicologosValidation = require("../validations/psicologos/create");
 const pacientesValidation = require("../validations/pacientes/create");
+const atendimentosValidation = require("../validations/atendimentos/cretate");
 const authController = require("../controller/authController");
 const authLoginValidation = require("../validations/auth/login");
+const authUser = require("../middlewares/auth");
 // const dashController = require("../controller/dashController");
 
 
@@ -28,13 +30,14 @@ routes.delete("/pacientes/:id", pacientesController.deletarPaciente);
 
 routes.get("/atendimentos", atendimentosController.listarAtendimentos);
 routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
-routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
+routes.post("/atendimentos", authUser, atendimentosValidation, atendimentosController.cadastrarAtendimento);
 routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 
 // Opcional
-// routes.get("/dashboard/numero-pacientes", dashController.pacientes);
-// routes.get("/dashboard/numero-atendimentos", dashController.atendimentos);
-// routes.get("/dashboard/numero-psicologos", dashController.psicologos);
+routes.get("/dashboard/numero-psicologos", dashController.psicologos);
+routes.get("/dashboard/numero-pacientes", dashController.pacientes);
+routes.get("/dashboard/numero-atendimentos", dashController.atendimentos);
+
 // routes.get("/dashboard/media-atendimentos", dashController.medAtendimentos);
 
 module.exports = routes;
