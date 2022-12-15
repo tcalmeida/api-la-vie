@@ -4,14 +4,10 @@ const bcrypt = require("bcryptjs");
 const psicologosController = {
   listarPsi: async (req, res) => {
     try {
-      const listar = await Psicologos.findAll({
-        attributes: {
-          exclude: ["createdAt", "updatedAt"],
-        },
-      });
+      const listar = await Psicologos.findAll();
       return res.status(200).json(listar);
     } catch (error) {
-      return res.status(500).json("Não foi possível realizar a ação");
+      return  res.status(500).json("Não foi possível realizar a ação");
     }
   },
 
@@ -40,7 +36,7 @@ const psicologosController = {
     try {
       const { nome, email, senha, apresentacao } = req.body;
       const senhaCripto = bcrypt.hashSync(senha, 10);
-      
+
       const cadastrarPsi = await Psicologos.create({
         nome,
         email,
@@ -57,7 +53,7 @@ const psicologosController = {
     const { id } = req.params;
     const { nome, email, senha, apresentacao } = req.body;
     senhaCripto = bcrypt.hashSync(senha, 10);
-    
+
     const checkPsi = await Psicologos.findByPk(id);
     if (!checkPsi) {
       return res.status(404).json("Id não encontrado");
@@ -77,7 +73,9 @@ const psicologosController = {
           },
         }
       );
-      return res.status(200).json(atualizarPsi);
+
+      showPsicologo = await Psicologos.findByPk(id);
+      return res.status(200).json(showPsicologo);
     } catch (error) {
       return res.status(500).json("Não foi possível atualizar o cadastro");
     }
