@@ -5,8 +5,12 @@ const pacientesController = require("../controller/pacientesController");
 const psicologosController = require("../controller/psicologosController");
 const psicologosValidation = require("../validations/psicologos/create");
 const pacientesValidation = require("../validations/pacientes/create");
+const authController = require("../controller/authController");
+const authLoginValidation = require("../validations/auth/login");
 
 const routes = express.Router();
+
+routes.post("/login", authLoginValidation, authController.login);
 
 routes.get("/psicologos", psicologosController.listarPsi);
 routes.get("/psicologos/:id", psicologosController.buscarPsiId);
@@ -20,11 +24,10 @@ routes.post("/pacientes", pacientesValidation, pacientesController.cadastrarPaci
 routes.put("/pacientes/:id", pacientesValidation, pacientesController.atualizarPaciente);
 routes.delete("/pacientes/:id", pacientesController.deletarPaciente);
 
-
 // routes.get("/atendimentos", atendimentosController.listarAtendimentos);
 // routes.get("/atendimentos/:id", atendimentosController.buscarAtendimento);
 // routes.post("/atendimentos", atendimentosController.cadastrarAtendimento);
-// // // //routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
+// routes.delete("/atendimentos/:id", atendimentosController.deletarAtendimento);
 
 // Opcional
 // routes.get("/dashboard/numero-pacientes", dashController.pacientes);
