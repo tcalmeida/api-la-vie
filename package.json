@@ -10,13 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "express-jwt": "^7.7.7",
     "express-validation": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.27.0"
   },
   "devDependencies": {
-    "express": "^4.18.2",
-    "sequelize": "^6.27.0"
+    "express": "^4.18.2"
   }
 }

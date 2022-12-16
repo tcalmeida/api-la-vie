@@ -4,6 +4,6 @@ module.exports = validate({
   body: Joi.object({
     data_atendimento: Joi.string().required(),
     observacao: Joi.string().required(),
-    pacientes_id: Joi.number().integer().required(),
+    paciente_id: Joi.number().integer().required(),
   }),
 });

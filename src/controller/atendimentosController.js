@@ -32,13 +32,13 @@ const atendimentosController = {
     console.log(req.auth)
     
     try {
-      const { data_atendimento, observacao, pacientes_id } = req.body;
+      const { paciente_id, data_atendimento, observacao  } = req.body;
 
       const cadastrarAtendimento = await Atendimentos.create({
+        paciente_id,
         data_atendimento,
         observacao,
-        pacientes_id,
-        psicologos_id: req.auth.id
+        psicologo_id: req.auth.id
       });
 
       return res.status(201).json(cadastrarAtendimento);

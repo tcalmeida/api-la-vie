@@ -6,10 +6,17 @@ const Psicologos = require("./Psicologos");
 const Atendimentos = db.define(
   "Atendimentos",
   {
-    id: {
+    atendimento_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
+    },
+    paciente_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Pacientes,
+        key: "id",
+      },
     },
     data_atendimento: {
       type: DataTypes.DATEONLY,
@@ -23,14 +30,7 @@ const Atendimentos = db.define(
     updatedAt: {
       type: DataTypes.DATE,
     },
-    pacientes_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: Pacientes,
-        key: "id",
-      },
-    },
-    psicologos_id: {
+    psicologo_id: {
       type: DataTypes.INTEGER,
       references: {
         model: Psicologos,
