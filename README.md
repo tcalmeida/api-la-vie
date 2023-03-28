@@ -1,7 +1,18 @@
 # api-la-vie
 
-Desafio #3 Gama Academy - Projeto API La Vie. 
+Challenge #3 Gama Academy - API La Vie Project 
 
-Um grupo de psicólogos se juntaram e criaram a clínica La Vie - Saúde Mental que oferece diversos tipos de terapia. Para ajudar nos atendimentos, eles precisam de uma API que permita criar registros de psicólogos, pacientes e prontuários. Em uma conversa com os Front-end e os PO foram decididos alguns grupos de endpoints que devem ser criados.
+This repository is the third project for the Gama Academy Web Development course, featuring a Web API for a fictional psychology clinic called La Vie.
 
-Nossa equipe também ficará responsável por criar o banco de dados que inclui: Criação do DER e do script SQL que gera o banco.
+Utilize the knowledge acquired in Node.js, Express, and MySQL database to create a Web API for a fictional psychology clinic called La Vie.
+
+Plot: A group of psychologists got together and created the clinic La Vie - Mental Health, which offers different types of therapy. To help with the consultations, they need an API that allows them to create records of psychologists, patients and medical records. In a conversation with the Front-end and the PO, some groups of endpoints that should be created were decided.
+
+Our team will be responsible for creating the database which includes: Creation of the DER and the SQL script that generates the database.
+
+Stacks: JavaScript | Node.js |  Express |  MySQL 
+
+MVC architecture
+  
+   
+   
